@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Loading...</title>
+        <style>
+            #loadingPage{
+            min-width: 100%;
+            min-height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 100vh;}
+        </style>
+    </head>
+    <body>
+        <div id="loadingPage">Loading...</div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script>
+		$(function() {
+			var invitename = location.pathname.substr(1);
+		    $.get('https://script.google.com/macros/s/AKfycbw5oz4qPj9-ngjE5Cx6fY93DBCTvaYu0x5WzUjSLmoEndEbneZ4dUk46sddzSnYnJkv/exec' + '?name=' + invitename , function(e) {
+		        $(loadingPage).hide();
+		        location.replace(e);
+		    });
+		});
+        </script>
+    </body>
+</html>
