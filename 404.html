@@ -22,9 +22,10 @@
         <div id="loadingPage">Loading...</div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script>
-		$(function() {
+		    $(function() {
 			var invitename = location.pathname.substr(1);
-		    $.get('https://script.google.com/macros/s/AKfycbw5oz4qPj9-ngjE5Cx6fY93DBCTvaYu0x5WzUjSLmoEndEbneZ4dUk46sddzSnYnJkv/exec' + '?name=' + invitename , function(e) {
+			var url = 'https://script.google.com/macros/s/AKfycbw5oz4qPj9-ngjE5Cx6fY93DBCTvaYu0x5WzUjSLmoEndEbneZ4dUk46sddzSnYnJkv/exec?name=' + invitename ;
+		    $.get(url , function(e) {
 		        $(loadingPage).hide();
 		        location.replace(e);
 		    });
