@@ -1,10 +1,153 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Hello world!</title>
+	    <meta charset="UTF-8">
+		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link href="style.css" rel="stylesheet">
+		<title>canaria URL</title>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	    <script type="text/javascript">
+	    $(document).ready(function(){
+		
+		    $("#copybtn").hide();
+			$("#short2").hide();
+			
+			var ans = "";
+			var word = "abcdefghijkmnpqrstuvwxyz";
+			var num = Math.floor( Math.random()* 99 ) + 1 ;
+			if (num < 10 ){
+			    num = "0" + num;
+			}
+			
+			for (var i = 0; i < 2; i++){
+			    ans += word.charAt( Math.floor( Math.random() * 24 ));
+			}
+			
+			ans += num;
+			document.getElementById("short1").value = ans;
+
+			$("#enter").click(function(){
+			    
+				var longurl = document.getElementById("long3").value;
+				var shorturl = document.getElementById("short1").value;
+				
+				if(longurl == ""){
+				
+				    alert("欄位不得為空!");
+				
+				}
+				else if( longurl.indexOf("https://") != -1 || longurl.indexOf("http://") != -1 ){
+				
+				    $("#enter").hide();
+					$("#copybtn").show();
+					$("#textdiv").hide();
+					$("#short1").hide();
+					$("#short2").show();
+					
+					var url = 'https://script.google.com/macros/s/AKfycbz4IHKiCIzRNjp8PM2UJskvo4l2Dsq-VYzsw-Jxz86uzL9tmjWDKPpMKHvrTDYM5Ycn/exec?name=' + shorturl + "&url=" + longurl;
+					$.get(url , function(e) {
+					   
+					   var ansurl = e;
+					   
+						document.getElementById("short2").value = ansurl;
+						$('#short2').prop('readonly', true);
+						$('#long3').prop('readonly', true);
+
+					});
+				
+				}
+				else{
+				
+				    alert("長網址欄位須包含https://或http://");
+				
+				}
+				
+			});
+			
+			$("#copybtn").click(function(){
+				
+				var copyText = document.getElementById("short2");
+				copyText.select();
+				copyText.setSelectionRange(0, 999);
+
+				navigator.clipboard.writeText(copyText.value);
+				alert("已複製: " + copyText.value);
+				
+			});
+			
+		});
+	    </script>
     </head>
     <body>
-        Hello world!
+	    <div class=root>
+		<div class=background></div>
+		
+		<div>
+		    <header class="pl-3 pl-lg-5 pr-3 pr-md-5 py-3">
+			    <nav class=d-flex>
+				<div class="header-logo flex">
+			        <a href=https://url.canaria.cc/>canaria URL</a>
+				</div>
+				</nav>
+			</header>
+		</div> 
+		
+		<div class="d-flex flex-column overflow-y-a h-100">
+		<section class="text-white h-100">
+		    <div class="container-fluid h-100">
+			<div class="row align-items-center h-100">
+			    <div class="col-12 col-md-7 col-lg-5 col-xl-4 my-3 my-lg-0 mb-3">
+				<div class="heroHome-2left create-form">
+				    <div class="card rounded-10 bg-g-1 text-dark mb-0">
+					<div class="card-body p-2 p-sm-3">
+					    <form>
+						<div class="form-group mb-3">
+						    <label class=label-fancy> 填入您想縮短的長網址 </label>
+							<input id="long3" type="text" value="" class="form-control form-control-lg form-control-fancy">
+						</div>
+						<div class="form-group mb-3">
+						    <div class="homeFormTiny__cust-title mb-0">
+							    <span> 您的短網址會是 </span>
+							</div>
+							<div id="textdiv" class="form-row no-margins">
+							    <div class="col-12 col-md-7 pr-md-0 pt-3">
+								<div dir=auto class="v-select alias-dropdown vs--single">
+								<div role=combobox class=vs__dropdown-toggle>
+									<span>url.canaria.cc</span>
+								</div>
+								</div>
+								</div>
+								<div class="col-12 col-md-5 pl-md-0 pt-3">
+								    <input id="short1" type="text" value="abc123" class="alias-input form-control">
+								</div>
+							</div>
+						</div>
+						<div class="form-group mb-3">
+							<input id="short2" type="text" value="處理中" class="form-control form-control-lg form-control-fancy">
+						</div>
+						<div class="d-flex align-items-center mt-1">
+							<button id="enter" type="button" class="btn btn-block btn-t-green btn-xl">送出</button>
+							<button id="copybtn" type="button" class="btn btn-block btn-t-green btn-xl">複製</button>
+						</div>
+						</form>
+					</div>
+					</div>
+				</div>
+				</div>
+				<div class="col-12 col-md-5 col-lg-4 col-xl-3 order-3 order-md-2 my-3 my-lg-0 d-none d-md-block mb-3">
+				<div class="heroHome-2cont font-weight-bold">
+				    歡迎使用 <h3 class="logoInText pb-2">canaria URL</h3>
+					<ul>
+					<li>快速縮短長網址</li>
+					<li>自行設定短網址</li>
+					</ul>
+				</div>
+				</div>
+			</div>
+			</div>
+		</section>
+		</div>
+		
+		</div>
     </body>
 </html>
