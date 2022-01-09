@@ -62,10 +62,10 @@
 			function copyfunction() {
 				var copyText = document.getElementById("short2");
 				copyText.select();
-				copyText.setSelectionRange(0, 999);
+				copyText.setSelectionRange(0, 99999);
 				
 				navigator.clipboard.writeText(copyText.value);
-				alert("已複製: " + copyText.value);
+				//alert("已複製: " + copyText.value);
 			}
 		</script>
 	</head>
