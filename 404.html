@@ -23,7 +23,7 @@
 		<script>
 		    $(function() {
 			var invitename = location.pathname.substr(1);
-			var url = 'https://script.google.com/macros/s/AKfycbw5oz4qPj9-ngjE5Cx6fY93DBCTvaYu0x5WzUjSLmoEndEbneZ4dUk46sddzSnYnJkv/exec?name=' + invitename ;
+			var url = 'https://script.google.com/macros/s/AKfycbwuOjPRNeyQrnyjOfryuiPEZG4alX8f-JxSTC9cNZhIcRiOA9_BW-MFcdnoedMTkY2x6Q/exec?name=' + invitename ;
 		    $.get(url , function(e) {
 		        $(loadingPage).hide();
 		        location.replace(e);
