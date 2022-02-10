@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link href="style.css" rel="stylesheet">
-		<title>canaria URL</title>
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<html lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type">
+	<meta charset="utf-8">
+	<meta content="webkit" name="renderer">
+	<meta content="webkit" name="force-rendering">
+	<meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+	<meta content="True" name="HandheldFriendly">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="theme-color" content="#f4f4f4">
+	<title>かなりあ短網址</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="src/logo/apple-touch-icon-next.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="src/logo/favicon-32x32-next.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="src/logo/favicon-16x16-next.png">
+	<link rel="mask-icon" href="src/logo/logo.svg" color="#f4f4f4">
+	<link href="src/main.css" rel="stylesheet">
+	<link href="src/darkmode.css" rel="stylesheet">
+	<script src="src/darkmode.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				
@@ -68,77 +81,59 @@
 				//alert("已複製: " + copyText.value);
 			}
 		</script>
-	</head>
-	<body>
-		<div class=root>
-		
-		<div class=background></div>
-		<div>
-			<header class="pl-3 pl-lg-5 pr-3 pr-md-5 py-3">
-			<nav class=d-flex>
-				<div class="header-logo flex">
-				<a href=https://url.canaria.cc/>canaria URL</a>
-				</div>
-			</nav>
-			</header>
+</head>
+<body>
+	<div id="app">
+		<header class="header">
+			<div class="header__left"></div>
+			<div class="header__right">
+				<a href="javascript:void(0);" id="btn-toggle-dark" rel="external nofollow noreferrer"><svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></a>
+			</div>
+		</header>
+		<div class="cover">
+			<div class="cover__logo">
+				<h1><b>かなりあ短網址</b></h1>
+			</div>
+			<div class="cover__intro">
+				<p>A url shortener service build by Google App Script.</p>
+			</div>
 		</div>
-		
-		<div class="d-flex flex-column overflow-y-a h-100">
-		<section class="text-white h-100">
-			<div class="container-fluid h-100">
-			<div class="row align-items-center h-100">
-				<div class="col-12 col-md-7 col-lg-5 col-xl-4 my-3 my-lg-0 mb-3">
-				<div class="heroHome-2left create-form">
-					<div class="card rounded-10 bg-g-1 text-dark mb-0">
-					<div class="card-body p-2 p-sm-3">
-						<form>
+		<main class="main">
+			<div class="post-list">
+				<div class="post-entry content-card">
+					<form>
 						<div class="form-group mb-3">
-							<label class=label-fancy> 填入您想縮短的長網址 </label>
-							<input id="long3" type="text" value="" class="form-control form-control-lg form-control-fancy">
+							<label class="label-fancy">填入您想縮短的長網址</label> <input class="form-control form-control-lg form-control-fancy" id="long3" type="text" value="">
 						</div>
 						<div class="form-group mb-3">
-							<div class="homeFormTiny__cust-title mb-0">
-							<span> 您的短網址會是 </span>
-							</div>
-							<div id="textdiv" class="form-row no-margins">
-							<div class="col-12 col-md-7 pr-md-0 pt-3">
-								<div dir=auto class="v-select alias-dropdown vs--single">
-								<div role=combobox class=vs__dropdown-toggle>
-								<span>url.canaria.cc</span>
+							<label class="label-fancy">您的短網址會是</label>
+							<div class="form-row" id="textdiv">
+								<div class="col-12 col-md-7 pr-md-0 pt-3">
+									<div class="v-select alias-dropdown vs--single" dir="auto">
+										<div class="vs__dropdown-toggle">
+											<span>url.canaria.cc</span>
+										</div>
+									</div>
 								</div>
+								<div class="col-12 col-md-5 pl-md-0 pt-3">
+									<input class="alias-input form-control" id="short1" type="text" value="abc123">
 								</div>
-							</div>
-							<div class="col-12 col-md-5 pl-md-0 pt-3">
-								<input id="short1" type="text" value="abc123" class="alias-input form-control">
-							</div>
 							</div>
 						</div>
 						<div class="form-group mb-3">
-							<input id="short2" type="text" value="處理中" class="form-control form-control-lg form-control-fancy">
+							<input class="form-control form-control-lg form-control-fancy" id="short2" type="text" value="處理中">
 						</div>
 						<div class="d-flex align-items-center mt-1">
-							<button id="enter" type="button" class="btn btn-block btn-t-green btn-xl">送出</button>
-							<button id="copybtn" type="button" onclick=copyfunction() class="btn btn-block btn-t-green btn-xl">複製</button>
+							<button class="btn btn-block btn-t-green btn-xl" id="enter" type="button">送出</button> <button class="btn btn-block btn-t-green btn-xl" id="copybtn" onclick="copyfunction()" type="button">複製</button>
 						</div>
-						</form>
-					</div>
-					</div>
-				</div>
-				</div>
-				<div class="col-12 col-md-5 col-lg-4 col-xl-3 order-3 order-md-2 my-3 my-lg-0 d-none d-md-block mb-3">
-				<div class="heroHome-2cont font-weight-bold">
-					歡迎使用 <h3 class="logoInText pb-2">canaria URL</h3>
-					<ul>
-						<li>快速縮短長網址</li>
-						<li>自行設定短網址</li>
-					</ul>
-				</div>
+					</form>
 				</div>
 			</div>
-			</div>
-		</section>
-		</div>
-		
-		</div>
-	</body>
+		</main>
+		<footer class="footer">
+			<p class="footer-copyright"><a href="https://canaria.cc/">canaria</a> © 2022</p>
+		</footer>
+	</div>
+</body>
 </html>
