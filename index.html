@@ -1,141 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="content-type">
-	<meta charset="utf-8">
-	<meta content="webkit" name="renderer">
-	<meta content="webkit" name="force-rendering">
-	<meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
-	<meta content="True" name="HandheldFriendly">
-	<meta content="yes" name="apple-mobile-web-app-capable">
-	<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="theme-color" content="#f4f4f4">
-	<title>かなりあ短網址</title>
-	<link rel="apple-touch-icon" sizes="180x180" href="src/logo/apple-touch-icon-next.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="src/logo/favicon-32x32-next.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="src/logo/favicon-16x16-next.png">
-	<link rel="mask-icon" href="src/logo/logo.svg" color="#f4f4f4">
-	<link href="src/main.css" rel="stylesheet">
-	<link href="src/darkmode.css" rel="stylesheet">
-	<link href="src/font-awesome/css/all.min.css" rel="stylesheet">
-	<script src="src/darkmode.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				
-				$("#copybtn").hide();
-				$("#short2").hide();
-				
-				var ans = "";
-				var word = "abcdefghijkmnpqrstuvwxyz";
-				var num = Math.floor( Math.random()* 99 ) + 1 ;
-				if (num < 10 ){
-					num = "0" + num;
-				}
-				
-				for (var i = 0; i < 2; i++){
-					ans += word.charAt( Math.floor( Math.random() * 24 ));
-				}
-				
-				ans += num;
-				document.getElementById("short1").value = ans;
-				
-				$("#enter").click(function(){
-					var longurl = document.getElementById("long3").value;
-					var shorturl = document.getElementById("short1").value;
-					
-					if(longurl == ""){
-						alert("長網址欄位不得為空!");
-					}
-					else if(shorturl == ""){
-						alert("短網址欄位不得為空!");
-					}
-					else if( longurl.indexOf("https://") != -1 || longurl.indexOf("http://") != -1 ){
-						
-						$("#enter").hide();
-						$("#copybtn").show();
-						$("#textdiv").hide();
-						$("#short1").hide();
-						$("#short2").show();
-						
-						var url = 'https://script.google.com/macros/s/AKfycbx4X_zNO_Ppq4WkMFtaQcYNLtw8B8Rml_gbeX5Psfcl6x_-AVVf19_kPxiHI1JXHwLwtw/exec?name=' + shorturl + "&url=" + longurl;
-						$.get(url , function(e) {
-							
-							var ansurl = e;
-							document.getElementById("short2").value = ansurl;
-							//$('#short2').prop('readonly', true);
-							$('#long3').prop('readonly', true);
-						});
-					}
-					else{
-						alert("長網址欄位須包含https://或http://");
-					}
-				});
-			});
-			
-			function copyfunction() {
-				var copyText = document.getElementById("short2");
-				copyText.select();
-				copyText.setSelectionRange(0, 99999);
-				
-				navigator.clipboard.writeText(copyText.value);
-				//alert("已複製: " + copyText.value);
-			}
-		</script>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta charset="utf-8">
+    <meta content="webkit" name="renderer">
+    <meta content="webkit" name="force-rendering">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="True" name="HandheldFriendly">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#f4f4f4">
+    <title>かなりあ短網址</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="src/logo/apple-touch-icon-next.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="src/logo/favicon-32x32-next.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="src/logo/favicon-16x16-next.png">
+    <link rel="mask-icon" href="src/logo/logo.svg" color="#f4f4f4">
+    <link href="src/main.css" rel="stylesheet">
+    <link href="src/darkmode.css" rel="stylesheet">
+    <link href="src/font-awesome/css/all.min.css" rel="stylesheet">
+    <script src="src/darkmode.js"></script>
+    <script src="src/main.js"></script>
 </head>
 <body>
-	<div id="app">
-		<header class="header">
-			<div class="header__left"></div>
-			<div class="header__right">
-				<a href="javascript:void(0);" id="btn-toggle-dark" rel="external nofollow noreferrer">
-				<i class="fa-solid fa-moon"></i>
-				</a>
-			</div>
-		</header>
-		<div class="cover">
-			<div class="cover__logo">
-				<h1><b>かなりあ短網址</b></h1>
-			</div>
-			<div class="cover__intro">
-				<p>A url shortener service build by Google App Script.</p>
-			</div>
-		</div>
-		<main class="main">
-			<div class="post-list">
-				<div class="post-entry content-card">
-					<form>
-						<div class="form-group mb-3">
-							<label class="label-fancy">填入您想縮短的長網址</label> <input class="form-control form-control-lg form-control-fancy" id="long3" type="text" value="">
-						</div>
-						<div class="form-group mb-3">
-							<label class="label-fancy">您的短網址會是</label>
-							<div class="form-row" id="textdiv">
-								<div class="col-12 col-md-7 pr-md-0 pt-3">
-									<div class="v-select alias-dropdown vs--single" dir="auto">
-										<div class="vs__dropdown-toggle">
-											<span>url.canaria.cc</span>
-										</div>
-									</div>
-								</div>
-								<div class="col-12 col-md-5 pl-md-0 pt-3">
-									<input class="alias-input form-control" id="short1" type="text" value="abc123">
-								</div>
-							</div>
-						</div>
-						<div class="form-group mb-3">
-							<input class="form-control form-control-lg form-control-fancy" id="short2" type="text" value="處理中">
-						</div>
-						<div class="d-flex align-items-center mt-1">
-							<button class="btn btn-block btn-t-green btn-xl" id="enter" type="button">送出</button> <button class="btn btn-block btn-t-green btn-xl" id="copybtn" onclick="copyfunction()" type="button">複製</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</main>
-		<footer class="footer">
-			<p class="footer-copyright"><a href="https://blog.canaria.cc/">canaria</a> © 2022</p>
-		</footer>
-	</div>
+    <div id="app">
+        <header class="header">
+            <div class="header__left"></div>
+            <div class="header__right">
+                <a href="javascript:void(0);" id="btn-toggle-dark" rel="external nofollow noreferrer">
+                <i class="fa-solid fa-moon"></i>
+                </a>
+            </div>
+        </header>
+        <div class="cover">
+            <div class="cover__logo">
+                <h1><b>かなりあ短網址</b></h1>
+            </div>
+            <div class="cover__intro">
+                <p>A url shortener service build by Google App Script.</p>
+            </div>
+        </div>
+        <main class="main">
+            <div class="post-list">
+                <div class="post-entry content-card">
+                    <form>
+                        <div class="form-group mb-3">
+                            <label class="label-fancy">填入您想縮短的長網址</label> <input class="form-control form-control-lg form-control-fancy" id="long3" type="text" value="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="label-fancy">您的短網址會是</label>
+                            <div class="form-row" id="textdiv">
+                                <div class="col-12 col-md-7 pr-md-0 pt-3">
+                                    <div class="v-select alias-dropdown vs--single" dir="auto">
+                                        <div class="vs__dropdown-toggle">
+                                            <span>url.canaria.cc</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-5 pl-md-0 pt-3">
+                                    <input class="alias-input form-control" id="short1" type="text" value="abc123">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input class="form-control form-control-lg form-control-fancy" id="short2" type="text" value="處理中">
+                        </div>
+                        <div class="d-flex align-items-center mt-1">
+                            <button class="btn btn-block btn-t-green btn-xl" id="enter" type="button">送出</button> <button class="btn btn-block btn-t-green btn-xl" id="copybtn" onclick="copyfunction()" type="button">複製</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p class="footer-copyright"><a href="https://blog.canaria.cc/">canaria</a> © 2022</p>
+        </footer>
+    </div>
 </body>
 </html>
