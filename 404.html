@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-	<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Loading...</title>
         <style>
             #loadingPage{
@@ -19,16 +19,26 @@
     </head>
     <body>
         <div id="loadingPage">Loading...</div>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script>
-		    $(function() {
-			var invitename = location.pathname.substr(1);
-			var url = 'https://script.google.com/macros/s/AKfycbwuOjPRNeyQrnyjOfryuiPEZG4alX8f-JxSTC9cNZhIcRiOA9_BW-MFcdnoedMTkY2x6Q/exec?name=' + invitename ;
-		    $.get(url , function(e) {
-		        $(loadingPage).hide();
-		        location.replace(e);
-		    });
-		});
-        </script>
+        <script>
+            window.addEventListener("load", function() {
+            var invitename = location.pathname.substr(1);
+            var url = "https://script.google.com/macros/s/AKfycbwuOjPRNeyQrnyjOfryuiPEZG4alX8f-JxSTC9cNZhIcRiOA9_BW-MFcdnoedMTkY2x6Q/exec?name=" + invitename;
+            fetch(url)
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        return "https://url.canaria.cc";
+                    }
+                })
+                .then(function (data) {
+                    location.replace(data);
+                })
+                .catch(function (error) {
+                    console.log('Something went wrong: ', error);
+                    location.replace("https://url.canaria.cc");
+                });
+            });
+            </script>
     </body>
 </html>
