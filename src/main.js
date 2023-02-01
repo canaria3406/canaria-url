@@ -1,8 +1,5 @@
 window.addEventListener("load", function () {
     
-    document.getElementById("copybtn").style.display = "none";
-    document.getElementById("short2").style.display = "none";
-    
     var ans = "";
     var word = "abcdefghijkmnpqrstuvwxyz";
     var num = Math.floor( Math.random()* 99 ) + 1 ;
