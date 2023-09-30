@@ -14,8 +14,9 @@ Live Demo : [url.canaria.cc](https://url.canaria.cc/ "canaria-url")
 ## Read Script Details
 
 When you visit a URL (EX: `url.canaria.cc/example`), it will redirect you to `404.html`.  
-The JavaScript code within `404.html` will send the parameter `example` to Google Apps Script and redirect the webpage to the returned URL.  
-Google Apps Script will then compare the data in Google Sheets, and if there is a match, it will return the long URL; otherwise, it will return `url.canaria.cc`.
+The JavaScript code within `404.html` will send the parameter `example` to Google Apps Script.  
+Google Apps Script will then compare the data in Google Sheets, and if there is a match, it will return the long URL; otherwise, it will return `url.canaria.cc`.  
+The `404.html` will then redirect the webpage to the returned URL.
 ```javascript
   var dbrow = 1;
   var url = "https://url.canaria.cc/";
