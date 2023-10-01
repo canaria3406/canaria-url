@@ -24,8 +24,7 @@ The `404.html` will then redirect the webpage to the returned URL.
   var db = sheet.getSheetByName('database');
 
   while (db.getRange(dbrow, 1).getValue() != '') {
-    var cond = db.getRange(dbrow, 2).getValue() == hashnum;
-    if (cond) {
+    if (db.getRange(dbrow, 2).getValue() == hashnum) {
       url = db.getRange(dbrow, 3).getValue();
       break;
     }
