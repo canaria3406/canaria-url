@@ -23,10 +23,10 @@ The `404.html` will then redirect the webpage to the returned URL.
   var sheet = SpreadsheetApp.getActive();
   var db = sheet.getSheetByName('database');
 
-  while(db.getRange(dbrow,1).getValue() != '') {
-    var cond = db.getRange(dbrow,2).getValue() == hashnum;
-    if(cond) {
-      url = db.getRange(dbrow,3).getValue()
+  while (db.getRange(dbrow, 1).getValue() != '') {
+    var cond = db.getRange(dbrow, 2).getValue() == hashnum;
+    if (cond) {
+      url = db.getRange(dbrow, 3).getValue();
       break;
     }
     dbrow++;
@@ -46,8 +46,8 @@ Write the current time, short URL, and long URL to Google Sheets, and return the
 
   // Checking URL here
 
-  db.appendRow([Date(),num,targeturl]);
+  db.appendRow([Date(), num, targeturl]);
   url2 = "https://url.canaria.cc/" + num;
-
+  
   return url2;
 ```
